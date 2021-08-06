@@ -6,7 +6,7 @@ import { Post } from './post.model';
 @Component({selector: 'app-root', templateUrl: './app.component.html', styleUrls: ['./app.component.css']})
 export class AppComponent implements OnInit {
     title = 'http-request';
-    loadedPosts = [];
+    loadedPosts:Post[] = [];
 
     constructor(private http : HttpClient) {}
 
@@ -47,6 +47,7 @@ export class AppComponent implements OnInit {
         }) )
         .subscribe(posts =>{
             console.log(posts)
+            this.loadedPosts = posts
         })
     }
 }
