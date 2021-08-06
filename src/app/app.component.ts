@@ -9,6 +9,7 @@ export class AppComponent implements OnInit {
     title = 'http-request';
     loadedPosts : Post[] = [];
     isFetching = false;
+    error = null
 
     constructor(private http : HttpClient, private postService : PostService) {}
 
@@ -18,6 +19,8 @@ export class AppComponent implements OnInit {
         this.postService.fetchPosts().subscribe(posts => {
             this.isFetching = false;
             this.loadedPosts = posts
+        },error => {
+            this.error = error.message
         });
 
     }
@@ -30,6 +33,8 @@ export class AppComponent implements OnInit {
         this.postService.fetchPosts().subscribe(posts => {
             this.isFetching = false;
             this.loadedPosts = posts
+        },error => {
+            this.error = error.message
         });
     }
 
